@@ -26,29 +26,19 @@ const connectDB=async()=>{
     }
 }
 
-// app.post('/test', async (req, res)=>{
+// -------------------------Problem while rendering, so copied this from GPT-----------------------------------
+import path from 'path';
+import { fileURLToPath } from 'url';
+import express from 'express'; // in case not already imported
 
-//     const options = {
-//         method: 'POST',
-//         headers: { 
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
-//         },
-//         body: JSON.stringify({
-//             model: 'gpt-4o-mini',
-//             messages : [{
-//                 role : "user",
-//                 content : req.body.message,
-//             }]
-//         })
-//     }
-//     try{
-//         const response = await fetch("https://api.openai.com/v1/chat/completions", options);
-//         const data = await response.json();
-//         // console.log(data.choices[0].message.content);
-//         res.send(data.choices[0].message.content);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-//     }catch(err){
-//         console.error(err);
-//     }
-// })
+// Serve static files from Vite build
+app.use(express.static(path.join(__dirname, '../Frontend/dist')));
+
+// Fallback to index.html for SPA routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../Frontend/dist/index.html'));
+});
+
