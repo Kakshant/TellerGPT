@@ -26,19 +26,3 @@ const connectDB=async()=>{
     }
 }
 
-// -------------------------Problem while rendering, so copied this from GPT-----------------------------------
-import path from 'path';
-import { fileURLToPath } from 'url';
-import express from 'express'; // in case not already imported
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Serve static files from Vite build
-app.use(express.static(path.join(__dirname, '../Frontend/dist')));
-
-// Fallback to index.html for SPA routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../Frontend/dist/index.html'));
-});
-
