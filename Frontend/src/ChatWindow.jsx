@@ -4,6 +4,7 @@ import { MyContext } from "./MyContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { BeatLoader } from 'react-spinners';
 import { v1 as uuidv1 } from 'uuid'
+import API_BASE from './api.js';
 
 export default function ChatWindow() {
 
@@ -27,7 +28,8 @@ export default function ChatWindow() {
         };
 
         try {
-            const response = await fetch("http://localhost:8080/api/chat", options);
+            // const response = await fetch("http://localhost:8080/api/chat", options);
+            const response = await fetch(`${API_BASE}/api/chat`, options);
             const res = await response.json();
             console.log(res);
             setReply(res.reply);
