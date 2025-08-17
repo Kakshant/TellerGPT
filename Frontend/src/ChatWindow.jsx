@@ -83,7 +83,7 @@ export default function ChatWindow() {
                 <div className="dropDown" >
                     {/* New chat button */}
                     <div className="dropDownItem" onClick={createNewChat}>
-                        <i className="fa-solid fa-share-nodes"></i> Create New Chat 
+                        <i className="fa-solid fa-pen-to-square"></i> Create New Chat 
                     </div>
                     {/* Upgrade button */}
                     <a href="https://openai.com/chatgpt/pricing/" target="blank">
